@@ -5,7 +5,8 @@ import cors from "cors";
 instanceConnection.connectDB();
 const app = express();
 app.use(cors({
-    methods: "GET, POST",
+    origin: '*', // Allow all origins
+    methods: "GET, POST, OPTIONS",
 }));
 app.use(express.json()); // Middleware to parse JSON bodies
 app.use(express.urlencoded({ extended: false })); // Middleware to parse URL-encoded bodies
