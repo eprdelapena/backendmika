@@ -1,9 +1,12 @@
 import express from "express"; // 1. import express
 import router from "./routes/routes"; // Import your routes
 import instanceConnection from "./config/database";
-
+import cors from "cors";
 instanceConnection.connectDB();
 const app = express();
+app.use(cors({
+    methods: "GET, POST",
+}))
 app.use(express.json()); // Middleware to parse JSON bodies
 app.use(express.urlencoded({ extended: false })); // Middleware to parse URL-encoded bodies
 

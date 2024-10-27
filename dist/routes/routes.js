@@ -2,11 +2,10 @@ import express from "express";
 import scomments from "../schema/scomments.js";
 import { authenticationMiddleware } from "../middleware/middleware.js";
 const router = express.Router();
-router.get("/comments", async (req, res) => {
+router.get("/comments", authenticationMiddleware, async (req, res) => {
     try {
         const response = await scomments.find({});
         res.status(200).json(response);
-        return;
     }
     catch (error) {
         console.error(error);
